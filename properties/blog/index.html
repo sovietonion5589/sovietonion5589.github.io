@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>sovietonion5589 blog</title>
+<title>Soviet Blog</title>
 <style>
   body {
     margin: 0;
@@ -20,67 +20,48 @@
     border-radius: 12px;
     color: white;
   }
-  .comment-section { margin-top: 20px; }
 </style>
 </head>
 <body>
 
 <h1>📜 Soviet Blog</h1>
 
-<!-- ===== Post 1 ===== -->
 <div class="post" id="post1">
   <h2>The Birth of the USSR</h2>
   <p>The Soviet Union was founded in 1922 after the 1917 Russian Revolution.</p>
-
-  <div class="comment-section">
-    <div id="disqus_thread_post1"></div>
-  </div>
 </div>
 
-<!-- ===== Post 2 ===== -->
 <div class="post" id="post2">
   <h2>The Space Race</h2>
   <p>The USSR launched Sputnik 1 in 1957, starting the space race and space milestones.</p>
-
-  <div class="comment-section">
-    <div id="disqus_thread_post2"></div>
-  </div>
 </div>
 
-<!-- ===== Disqus Embed (Post 1) ===== -->
-<script>
-  var disqus_config = function () {
-    this.page.url = "https://example.com/post1"; // Replace with the real URL of post1
-    this.page.identifier = "post1";             // Unique ID for post1
-  };
-  (function() {
-    var d = document, s = d.createElement('script');
-    s.src = 'https://sovietonionball5589.disqus.com/embed.js';
-    s.setAttribute('data-timestamp', +new Date());
-    s.setAttribute('data-disqus-identifier', 'post1');
-    (d.head || d.body).appendChild(s);
-  })();
-</script>
-
-<!-- ===== Disqus Embed (Post 2) ===== -->
-<script>
-  var disqus_config = function () {
-    this.page.url = "https://example.com/post2"; // Replace with the real URL of post2
-    this.page.identifier = "post2";             // Unique ID for post2
-  };
-  (function() {
-    var d = document, s = d.createElement('script');
-    s.src = 'https://sovietonionball5589.disqus.com/embed.js';
-    s.setAttribute('data-timestamp', +new Date());
-    s.setAttribute('data-disqus-identifier', 'post2');
-    (d.head || d.body).appendChild(s);
-  })();
-</script>
-
-<noscript>
-  Please enable JavaScript to view the
-  <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
-</noscript>
+<!-- Disqus comment section -->
+<div class="post">
+  <h2>Comments</h2>
+  <div id="disqus_thread"></div>
+  <script>
+    /**
+    *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+    *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+    */
+    /*
+    var disqus_config = function () {
+      this.page.url = window.location.href;  // Page's canonical URL
+      this.page.identifier = window.location.pathname; // Page's unique identifier
+    };
+    */
+    (function() { // DON'T EDIT BELOW THIS LINE
+      var d = document, s = d.createElement('script');
+      s.src = 'https://sovietonionball5589.disqus.com/embed.js'; // <-- your Disqus shortname
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the
+    <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+  </noscript>
+</div>
 
 </body>
 </html>
