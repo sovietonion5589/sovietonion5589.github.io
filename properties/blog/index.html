@@ -5,20 +5,20 @@
 <title>Soviet Blog</title>
 <style>
   body {
-    margin: 0;
+    margin:0;
     font-family: Arial, sans-serif;
     background: url('background.png') no-repeat center center fixed;
     background-size: cover;
+    color:#fff;
   }
-  h1 { text-align: center; color: white; margin-top: 20px; }
+  h1 { text-align:center; margin-top:20px; }
   .post {
-    background: rgba(255,255,255,0.2);
+    background: rgba(0,0,0,0.4);
     backdrop-filter: blur(10px);
     margin: 20px auto;
     padding: 20px;
     width: 80%;
     border-radius: 12px;
-    color: white;
   }
 </style>
 </head>
@@ -26,40 +26,45 @@
 
 <h1>sovietonion5589 blog</h1>
 
-<div class="post" id="post1">
-  <h2>First Post</h2>
-  <p>Hi</p>
-  <p>(Posted at 21 Sep 2025)</p>
-</div>
-  
-<!-- Disqus comment section -->
+<!-- Containers where posts will be inserted -->
+<div id="post1" class="post"></div>
+<div id="post2" class="post"></div>
+
+<!-- Global Disqus comments -->
 <div class="post">
-  <h2>Comments</h2>
+  <h2>💬 Community Comments</h2>
   <div id="disqus_thread"></div>
   <script>
-    /**
-    *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-    *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
-    */
-    /*
     var disqus_config = function () {
-      this.page.url = window.location.href;  // Page's canonical URL
-      this.page.identifier = window.location.pathname; // Page's unique identifier
+      this.page.url = window.location.href;
+      this.page.identifier = "global-comments";
     };
-    */
-    (function() { // DON'T EDIT BELOW THIS LINE
+    (function() {
       var d = document, s = d.createElement('script');
-      s.src = 'https://sovietonionball5589.disqus.com/embed.js'; // <-- your Disqus shortname
+      s.src = 'https://sovietonionball5589.disqus.com/embed.js'; // your Disqus shortname
       s.setAttribute('data-timestamp', +new Date());
       (d.head || d.body).appendChild(s);
     })();
   </script>
-  <noscript>Please enable JavaScript to view the
+  <noscript>Please enable JavaScript to view
     <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
   </noscript>
 </div>
 
+<script>
+// Load each post’s HTML and inject it into the page
+function loadPost(id, file){
+  fetch(file)
+    .then(r => r.text())
+    .then(html => { document.getElementById(id).innerHTML = html; });
+}
+loadPost("post1","posts/post1.html");
+loadPost("post2","posts/post2.html");
+// add more posts here: loadPost("post3","posts/post3.html");
+</script>
+
 </body>
 </html>
+
 
 
