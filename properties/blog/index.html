@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Soviet Blog</title>
+<title>sovietonion5589 blog</title>
 <style>
   body {
     margin: 0;
@@ -20,123 +20,67 @@
     border-radius: 12px;
     color: white;
   }
-  .comment-section { margin-top: 15px; }
-  .comment { margin-bottom: 5px; padding: 5px; background: rgba(0,0,0,0.3); border-radius: 5px; }
-  textarea { width: 100%; padding: 5px; margin-top: 5px; }
-  button { margin-top: 5px; padding: 5px 10px; cursor: pointer; }
+  .comment-section { margin-top: 20px; }
 </style>
 </head>
 <body>
 
 <h1>📜 Soviet Blog</h1>
 
+<!-- ===== Post 1 ===== -->
 <div class="post" id="post1">
   <h2>The Birth of the USSR</h2>
   <p>The Soviet Union was founded in 1922 after the 1917 Russian Revolution.</p>
 
-  <div class="comment-section" id="comments-post1"></div>
-
-  <button onclick="loginGoogle()">Login with Google to Comment</button>
-
-  <div id="comment-form-post1" style="display:none;">
-    <textarea id="comment-input-post1" rows="3" placeholder="Write a comment..."></textarea>
-    <button onclick="submitComment('post1')">Submit Comment</button>
+  <div class="comment-section">
+    <div id="disqus_thread_post1"></div>
   </div>
 </div>
 
+<!-- ===== Post 2 ===== -->
 <div class="post" id="post2">
   <h2>The Space Race</h2>
   <p>The USSR launched Sputnik 1 in 1957, starting the space race and space milestones.</p>
 
-  <div class="comment-section" id="comments-post2"></div>
-
-  <button onclick="loginGoogle()">Login with Google to Comment</button>
-
-  <div id="comment-form-post2" style="display:none;">
-    <textarea id="comment-input-post2" rows="3" placeholder="Write a comment..."></textarea>
-    <button onclick="submitComment('post2')">Submit Comment</button>
+  <div class="comment-section">
+    <div id="disqus_thread_post2"></div>
   </div>
 </div>
 
-<script type="module">
-  // Firebase Initialization
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-app.js";
-  import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-analytics.js";
-  import { getAuth, GoogleAuthProvider, signInWithPopup, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-auth.js";
-  import { getFirestore, collection, addDoc, query, where, orderBy, getDocs, serverTimestamp } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-firestore.js";
-
-  const firebaseConfig = {
-    apiKey: "AIzaSyBO6G7wP1uLipph-YpOUxVJM0I9mI7OGgA",
-    authDomain: "sovietblog-50e39.firebaseapp.com",
-    projectId: "sovietblog-50e39",
-    storageBucket: "sovietblog-50e39.firebasestorage.app",
-    messagingSenderId: "1047952251142",
-    appId: "1:1047952251142:web:d5eb54c8e7a486ee8da687",
-    measurementId: "G-NF5X24EMJ6"
+<!-- ===== Disqus Embed (Post 1) ===== -->
+<script>
+  var disqus_config = function () {
+    this.page.url = "https://example.com/post1"; // Replace with the real URL of post1
+    this.page.identifier = "post1";             // Unique ID for post1
   };
-
-  const app = initializeApp(firebaseConfig);
-  const analytics = getAnalytics(app);
-  const auth = getAuth(app);
-  const db = getFirestore(app);
-  let currentUser = null;
-
-  // Google login
-  async function loginGoogle() {
-    const provider = new GoogleAuthProvider();
-    try {
-      const result = await signInWithPopup(auth, provider);
-      currentUser = result.user;
-      alert("Logged in as " + currentUser.email);
-      showCommentForms();
-    } catch(err) {
-      alert("Login failed: " + err.message);
-    }
-  }
-
-  function showCommentForms() {
-    document.querySelectorAll('[id^="comment-form"]').forEach(el => el.style.display="block");
-  }
-
-  // Submit comment
-  async function submitComment(postId) {
-    if(!currentUser){ alert("Login first!"); return; }
-    const text = document.getElementById("comment-input-"+postId).value.trim();
-    if(!text) return;
-    await addDoc(collection(db, "comments"), {
-      postId: postId,
-      user: currentUser.email,
-      text: text,
-      timestamp: serverTimestamp()
-    });
-    document.getElementById("comment-input-"+postId).value = "";
-    loadComments(postId);
-  }
-
-  // Load comments
-  async function loadComments(postId){
-    const container = document.getElementById("comments-"+postId);
-    container.innerHTML = "";
-    const q = query(collection(db, "comments"), where("postId","==",postId), orderBy("timestamp"));
-    const snapshot = await getDocs(q);
-    snapshot.forEach(doc=>{
-      const data = doc.data();
-      const div = document.createElement("div");
-      div.className="comment";
-      div.textContent = data.user + ": " + data.text;
-      container.appendChild(div);
-    });
-  }
-
-  // Load all comments on page load
-  ["post1","post2"].forEach(pid => loadComments(pid));
-
-  // Detect auth state changes
-  onAuthStateChanged(auth, user=>{
-    if(user){ currentUser=user; showCommentForms(); }
-  });
-
+  (function() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://sovietonionball5589.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    s.setAttribute('data-disqus-identifier', 'post1');
+    (d.head || d.body).appendChild(s);
+  })();
 </script>
+
+<!-- ===== Disqus Embed (Post 2) ===== -->
+<script>
+  var disqus_config = function () {
+    this.page.url = "https://example.com/post2"; // Replace with the real URL of post2
+    this.page.identifier = "post2";             // Unique ID for post2
+  };
+  (function() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://sovietonionball5589.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    s.setAttribute('data-disqus-identifier', 'post2');
+    (d.head || d.body).appendChild(s);
+  })();
+</script>
+
+<noscript>
+  Please enable JavaScript to view the
+  <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+</noscript>
 
 </body>
 </html>
